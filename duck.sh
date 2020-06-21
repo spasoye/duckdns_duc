@@ -1,18 +1,18 @@
 #!/bin/bash
 
-cd /home/ivan/duckdns
+cd $HOME/duckdns_duc
 
 check="FAIL"
 
-while [ $check != "OK" ]
+while [[ $check != "OK" ]]
 do
-    check=$(echo url="https://www.uckdns.org/update?domains=spasoye&token=5dec56a1-ddb0-4c7b-bda1-5d22ca1cc6d0&ip=" | curl -k -K -)
+    check=$(echo url="https://www.duckdns.org/update?domains=spasoye&token=5dec56a1-ddb0-4c7b-bda1-5d22ca1cc6d0&ip=" | curl -k -K -)
 
     sleep 5
 
-    if [ $check == "OK" ]
+    if [[ $check == "OK" ]]
     then
-	echo "PASS"
+	    echo "PASS"
         msg="PASS"
     else	
         echo "FAIL"
