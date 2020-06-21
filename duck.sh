@@ -2,21 +2,26 @@
 
 cd /home/ivan/duckdns
 
-check=$(echo url="https://www.duckdns.org/update?domains=spasoye&token=5dec56a1-ddb0-4c7b-bda1-5d22ca1cc6d0&ip=" | curl -k -K -)
+check="FAIL"
 
-# echo $check
+while [ $check != "OK" ]
+do
+    check=$(echo url="https://www.uckdns.org/update?domains=spasoye&token=5dec56a1-ddb0-4c7b-bda1-5d22ca1cc6d0&ip=" | curl -k -K -)
 
-if [ $check == "OK" ]
-then
-    msg="PASS"
-else
-    msg="FAIL"
-fi
+    sleep 5
 
-echo $msg
+    if [ $check == "OK" ]
+    then
+	echo "PASS"
+        msg="PASS"
+    else	
+        echo "FAIL"
+        msg="FAIL"
+    fi
 
-# Log the output and the timestamp
-echo "`{ date +"%D %T"; echo $msg; } | tr "\n" " "`" >> duck.log
+    # Log the output and the timestamp
+    echo "`{ date +"%D %T"; echo $msg; } | tr "\n" " "`" >> duck.log
+done
 
 if [ "$check" == "OK" ]; then
     exit 0
