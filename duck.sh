@@ -20,7 +20,7 @@ do
     fi
 
     # Log the output and the timestamp
-    echo "`{ date +"%D %T"; echo $msg; } | tr "\n" " "`" >> duck.log
+    echo "`{ date +"%D %T"; echo $msg; } | tr "\n" " "`"
 done
 
 if [ "$check" == "OK" ]; then
