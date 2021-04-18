@@ -4,9 +4,14 @@ cd $HOME/duckdns_duc
 
 check="FAIL"
 
+if [ $# -ne 2 ]; then
+    echo "Need hostname and token arguments"
+    exit 1
+fi
+
 while [[ $check != "OK" ]]
 do
-    check=$(echo url="https://www.duckdns.org/update?domains=spasoye&token=5dec56a1-ddb0-4c7b-bda1-5d22ca1cc6d0&ip=" | curl -k -K -)
+    check=$(echo url="https://www.duckdns.org/update?domains=$1&token=$2&ip=" | curl -k -K -)
 
     sleep 5
 
